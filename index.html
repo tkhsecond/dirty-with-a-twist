@@ -91,7 +91,7 @@ localStorage.setItem(KEY, JSON.stringify(state));
 let current = "all";
 const byId = Object.fromEntries(seed.map(s=>[s.id,s]));
 function save(){ localStorage.setItem(KEY, JSON.stringify(state)); render(); }
-function addPlaying(id){ if(!state.playing.includes(id)) state.playing.push(id); state.removed = state.removed.filter(x=>x!==id); save(); }
+function addPlaying(id){ if(!state.playing.includes(id)) state.playing.push(id); state.all = state.all.filter(x=>x!==id); state.removed = state.removed.filter(x=>x!==id); save(); }
 function removeFrom(list,id){ state[list]=state[list].filter(x=>x!==id); state.removedFrom[id]=list; if(!state.removed.includes(id)) state.removed.push(id); save(); }
 function restore(id){ const dest=state.removedFrom[id]||"all"; if(!state[dest].includes(id)) state[dest].push(id); state.removed=state.removed.filter(x=>x!==id); delete state.removedFrom[id]; save(); }
 function render(){
