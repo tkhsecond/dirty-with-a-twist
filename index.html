@@ -102,7 +102,7 @@ function render(){
     if(current==="all") actions=`<button class="action playing" onclick="addPlaying('${id}')">Add to Playing</button><button class="action remove" onclick="removeFrom('all','${id}')">Remove</button>`;
     else if(current==="playing") actions=`<button class="action remove" onclick="removeFrom('playing','${id}')">Remove</button>`;
     else actions=`<button class="action restore" onclick="restore('${id}')">Restore</button>`;
-    tr.innerHTML=`<td class="name"><a href="${s.apple}" target="_blank" rel="noopener">${s.name}</a></td><td class="artist">${s.artist}</td><td class="link"><a href="${s.bass}" target="_blank" rel="noopener">${s.bass_status==="curated"?"Bass lesson":"Find bass video"} <span>${s.bass_status==="curated"?"✓":"↗"}</span></a></td><td><div class="actions">${actions}</div></td>`;
+    tr.innerHTML=`<td class="name"><a href="${s.apple}" target="_blank" rel="noopener">${s.name}</a></td><td class="artist">${s.artist}</td>`;
     tbody.appendChild(tr);
   });
   document.getElementById("count").textContent=`${ids.length} song${ids.length===1?"":"s"}`;
