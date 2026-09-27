@@ -68,13 +68,13 @@ a:hover{text-decoration:underline}
 
 <div class="card">
 <table>
-<thead><tr><th>Name</th><th>Artist</th></tr></thead>
+<thead><tr><th>Name</th><th>Artist</th><th>Action</th></tr></thead>
 <tbody id="rows"></tbody>
 </table>
 <div id="empty" class="empty" style="display:none"></div>
 </div>
 <div class="note">
-  Playing Together is shared across devices. Song titles open Apple Music.
+  Songs can be in only one list at a time. Song titles open Apple Music.
 </div>
 </div>
 
@@ -82,28 +82,76 @@ a:hover{text-decoration:underline}
 const seed = [{"id":"s001","name":"Fade Away","artist":"V-Roys","apple":"https://music.apple.com/us/search?term=Fade+Away+V-Roys","bass":"https://www.youtube.com/results?search_query=Fade+Away+V-Roys+bass+tab","bass_status":"search"},{"id":"s002","name":"Boys Don't Cry (LP Version)","artist":"The Cure","apple":"https://music.apple.com/us/search?term=Boys+Don%27t+Cry+%28LP+Version%29+The+Cure","bass":"https://www.youtube.com/results?search_query=Boys+Don%27t+Cry+%28LP+Version%29+The+Cure+bass+tab","bass_status":"search"},{"id":"s003","name":"Another Nail In My Heart","artist":"Squeeze","apple":"https://music.apple.com/us/search?term=Another+Nail+In+My+Heart+Squeeze","bass":"https://www.youtube.com/results?search_query=Another+Nail+In+My+Heart+Squeeze+bass+tab","bass_status":"search"},{"id":"s004","name":"Nothing from Nothing","artist":"Billy Preston","apple":"https://music.apple.com/us/search?term=Nothing+from+Nothing+Billy+Preston","bass":"https://www.youtube.com/results?search_query=Nothing+from+Nothing+Billy+Preston+bass+tab","bass_status":"search"},{"id":"s005","name":"Take the Power Back","artist":"Rage Against the Machine","apple":"https://music.apple.com/us/search?term=Take+the+Power+Back+Rage+Against+the+Machine","bass":"https://www.youtube.com/watch?v=aOOhMDhId58","bass_status":"curated"},{"id":"s006","name":"Root Down","artist":"Beastie Boys","apple":"https://music.apple.com/us/search?term=Root+Down+Beastie+Boys","bass":"https://www.youtube.com/results?search_query=Root+Down+Beastie+Boys+bass+tab","bass_status":"search"},{"id":"s007","name":"Stray Cat Strut","artist":"Stray Cats","apple":"https://music.apple.com/us/search?term=Stray+Cat+Strut+Stray+Cats","bass":"https://www.youtube.com/results?search_query=Stray+Cat+Strut+Stray+Cats+bass+tab","bass_status":"search"},{"id":"s008","name":"Rosanna","artist":"Toto","apple":"https://music.apple.com/us/search?term=Rosanna+Toto","bass":"https://www.youtube.com/results?search_query=Rosanna+Toto+bass+tab","bass_status":"search"},{"id":"s009","name":"Send Me On My Way","artist":"Rusted Root","apple":"https://music.apple.com/us/search?term=Send+Me+On+My+Way+Rusted+Root","bass":"https://www.youtube.com/results?search_query=Send+Me+On+My+Way+Rusted+Root+bass+tab","bass_status":"search"},{"id":"s010","name":"New Life in Old Mexico","artist":"Robert Earl Keen","apple":"https://music.apple.com/us/search?term=New+Life+in+Old+Mexico+Robert+Earl+Keen","bass":"https://www.youtube.com/results?search_query=New+Life+in+Old+Mexico+Robert+Earl+Keen+bass+tab","bass_status":"search"},{"id":"s011","name":"My City Was Gone","artist":"Pretenders","apple":"https://music.apple.com/us/search?term=My+City+Was+Gone+Pretenders","bass":"https://www.youtube.com/results?search_query=My+City+Was+Gone+Pretenders+bass+tab","bass_status":"search"},{"id":"s012","name":"Waiting Room","artist":"Fugazi","apple":"https://music.apple.com/us/search?term=Waiting+Room+Fugazi","bass":"https://www.youtube.com/results?search_query=Waiting+Room+Fugazi+bass+tab","bass_status":"search"},{"id":"s013","name":"Lisztomania","artist":"Phoenix","apple":"https://music.apple.com/us/search?term=Lisztomania+Phoenix","bass":"https://www.youtube.com/results?search_query=Lisztomania+Phoenix+bass+tab","bass_status":"search"},{"id":"s014","name":"Gennarino 'O Sioux","artist":"Tonica & Dominante","apple":"https://music.apple.com/us/search?term=Gennarino+%27O+Sioux+Tonica+%26+Dominante","bass":"https://www.youtube.com/results?search_query=Gennarino+%27O+Sioux+Tonica+%26+Dominante+bass+tab","bass_status":"search"},{"id":"s015","name":"I Turn My Camera On","artist":"Spoon","apple":"https://music.apple.com/us/search?term=I+Turn+My+Camera+On+Spoon","bass":"https://www.youtube.com/results?search_query=I+Turn+My+Camera+On+Spoon+bass+tab","bass_status":"search"},{"id":"s016","name":"I Will Remain","artist":"Old 97's","apple":"https://music.apple.com/us/search?term=I+Will+Remain+Old+97%27s","bass":"https://www.youtube.com/results?search_query=I+Will+Remain+Old+97%27s+bass+tab","bass_status":"search"},{"id":"s017","name":"Don't Dream It's Over","artist":"Crowded House","apple":"https://music.apple.com/us/search?term=Don%27t+Dream+It%27s+Over+Crowded+House","bass":"https://www.youtube.com/results?search_query=Don%27t+Dream+It%27s+Over+Crowded+House+bass+tab","bass_status":"search"},{"id":"s018","name":"It Was a Good Day","artist":"Ice Cube","apple":"https://music.apple.com/us/search?term=It+Was+a+Good+Day+Ice+Cube","bass":"https://www.youtube.com/results?search_query=It+Was+a+Good+Day+Ice+Cube+bass+tab","bass_status":"search"},{"id":"s019","name":"Nuthin' But A \"G\" Thang","artist":"Dr. Dre & Snoop Dogg","apple":"https://music.apple.com/us/search?term=Nuthin%27+But+A+%22G%22+Thang+Dr.+Dre+%26+Snoop+Dogg","bass":"https://www.youtube.com/results?search_query=Nuthin%27+But+A+%22G%22+Thang+Dr.+Dre+%26+Snoop+Dogg+bass+tab","bass_status":"search"},{"id":"s020","name":"Ain't No Sunshine","artist":"Bill Withers","apple":"https://music.apple.com/us/search?term=Ain%27t+No+Sunshine+Bill+Withers","bass":"https://www.youtube.com/results?search_query=Ain%27t+No+Sunshine+Bill+Withers+bass+tab","bass_status":"search"},{"id":"s021","name":"Folsom Prison Blues","artist":"Johnny Cash","apple":"https://music.apple.com/us/search?term=Folsom+Prison+Blues+Johnny+Cash","bass":"https://www.youtube.com/results?search_query=Folsom+Prison+Blues+Johnny+Cash+bass+tab","bass_status":"search"},{"id":"s022","name":"Out of My Head","artist":"Fastball","apple":"https://music.apple.com/us/search?term=Out+of+My+Head+Fastball","bass":"https://www.youtube.com/results?search_query=Out+of+My+Head+Fastball+bass+tab","bass_status":"search"},{"id":"s023","name":"Secret Agent Man","artist":"Johnny Rivers","apple":"https://music.apple.com/us/search?term=Secret+Agent+Man+Johnny+Rivers","bass":"https://www.youtube.com/results?search_query=Secret+Agent+Man+Johnny+Rivers+bass+tab","bass_status":"search"},{"id":"s024","name":"Tennessee Whiskey","artist":"Chris Stapleton","apple":"https://music.apple.com/us/search?term=Tennessee+Whiskey+Chris+Stapleton","bass":"https://www.youtube.com/results?search_query=Tennessee+Whiskey+Chris+Stapleton+bass+tab","bass_status":"search"},{"id":"s025","name":"(What's So Funny 'Bout) Peace, Love and Understanding","artist":"Elvis Costello & The Attractions","apple":"https://music.apple.com/us/search?term=%28What%27s+So+Funny+%27Bout%29+Peace%2C+Love+and+Understanding+Elvis+Costello+%26+The+Attractions","bass":"https://www.youtube.com/results?search_query=%28What%27s+So+Funny+%27Bout%29+Peace%2C+Love+and+Understanding+Elvis+Costello+%26+The+Attractions+bass+tab","bass_status":"search"},{"id":"s026","name":"With a Little Help from My Friends","artist":"The Beatles","apple":"https://music.apple.com/us/search?term=With+a+Little+Help+from+My+Friends+The+Beatles","bass":"https://www.youtube.com/results?search_query=With+a+Little+Help+from+My+Friends+The+Beatles+bass+tab","bass_status":"search"},{"id":"s027","name":"Mercy, Mercy","artist":"The Rolling Stones","apple":"https://music.apple.com/us/search?term=Mercy%2C+Mercy+The+Rolling+Stones","bass":"https://www.youtube.com/results?search_query=Mercy%2C+Mercy+The+Rolling+Stones+bass+tab","bass_status":"search"},{"id":"s028","name":"BridgeBuilder","artist":"JD McPherson","apple":"https://music.apple.com/us/search?term=BridgeBuilder+JD+McPherson","bass":"https://www.youtube.com/results?search_query=BridgeBuilder+JD+McPherson+bass+tab","bass_status":"search"},{"id":"s029","name":"The House Is Rockin'","artist":"Stevie Ray Vaughan & Double Trouble","apple":"https://music.apple.com/us/search?term=The+House+Is+Rockin%27+Stevie+Ray+Vaughan+%26+Double+Trouble","bass":"https://www.youtube.com/results?search_query=The+House+Is+Rockin%27+Stevie+Ray+Vaughan+%26+Double+Trouble+bass+tab","bass_status":"search"},{"id":"s030","name":"Proud Mary","artist":"Creedence Clearwater Revival","apple":"https://music.apple.com/us/search?term=Proud+Mary+Creedence+Clearwater+Revival","bass":"https://www.youtube.com/results?search_query=Proud+Mary+Creedence+Clearwater+Revival+bass+tab","bass_status":"search"},{"id":"s031","name":"Ridin' in My Car","artist":"NRBQ","apple":"https://music.apple.com/us/search?term=Ridin%27+in+My+Car+NRBQ","bass":"https://www.youtube.com/results?search_query=Ridin%27+in+My+Car+NRBQ+bass+tab","bass_status":"search"},{"id":"s032","name":"Bring It On Home to Me","artist":"Sam Cooke","apple":"https://music.apple.com/us/search?term=Bring+It+On+Home+to+Me+Sam+Cooke","bass":"https://www.youtube.com/results?search_query=Bring+It+On+Home+to+Me+Sam+Cooke+bass+tab","bass_status":"search"},{"id":"s033","name":"Running on Empty","artist":"Jackson Browne","apple":"https://music.apple.com/us/search?term=Running+on+Empty+Jackson+Browne","bass":"https://www.youtube.com/results?search_query=Running+on+Empty+Jackson+Browne+bass+tab","bass_status":"search"},{"id":"s034","name":"Black Coffee in Bed","artist":"Squeeze","apple":"https://music.apple.com/us/search?term=Black+Coffee+in+Bed+Squeeze","bass":"https://www.youtube.com/results?search_query=Black+Coffee+in+Bed+Squeeze+bass+tab","bass_status":"search"},{"id":"s035","name":"Say It Ain't So","artist":"Weezer","apple":"https://music.apple.com/us/search?term=Say+It+Ain%27t+So+Weezer","bass":"https://www.youtube.com/results?search_query=Say+It+Ain%27t+So+Weezer+bass+tab","bass_status":"search"},{"id":"s036","name":"Beer Drinkers & Hell Raisers","artist":"ZZ Top","apple":"https://music.apple.com/us/search?term=Beer+Drinkers+%26+Hell+Raisers+ZZ+Top","bass":"https://www.youtube.com/results?search_query=Beer+Drinkers+%26+Hell+Raisers+ZZ+Top+bass+tab","bass_status":"search"},{"id":"s037","name":"I Need to Know","artist":"Tom Petty and the Heartbreakers","apple":"https://music.apple.com/us/search?term=I+Need+to+Know+Tom+Petty+and+the+Heartbreakers","bass":"https://www.youtube.com/results?search_query=I+Need+to+Know+Tom+Petty+and+the+Heartbreakers+bass+tab","bass_status":"search"},{"id":"s038","name":"I'm the Man","artist":"Joe Jackson","apple":"https://music.apple.com/us/search?term=I'm+the+Man+Joe+Jackson","bass":"https://www.youtube.com/results?search_query=I'm+the+Man+Joe+Jackson+bass+tab","bass_status":"search"},{"id":"s039","name":"Precious","artist":"Pretenders","apple":"https://music.apple.com/us/search?term=Precious+Pretenders","bass":"https://www.youtube.com/results?search_query=Precious+Pretenders+bass+tab","bass_status":"search"},{"id":"s040","name":"Go with the Flow","artist":"Queens of the Stone Age","apple":"https://music.apple.com/us/search?term=Go+with+the+Flow+Queens+of+the+Stone+Age","bass":"https://www.youtube.com/results?search_query=Go+with+the+Flow+Queens+of+the+Stone+Age+bass+tab","bass_status":"search"},{"id":"s041","name":"Don't Ya Stop","artist":"The Cars","apple":"https://music.apple.com/us/search?term=Don't+Ya+Stop+The+Cars","bass":"https://www.youtube.com/results?search_query=Don't+Ya+Stop+The+Cars+bass+tab","bass_status":"search"},{"id":"s042","name":"Already Gone","artist":"Eagles","apple":"https://music.apple.com/us/search?term=Already+Gone+Eagles","bass":"https://www.youtube.com/results?search_query=Already+Gone+Eagles+bass+tab","bass_status":"search"},{"id":"s043","name":"You Got Lucky","artist":"Tom Petty and the Heartbreakers","apple":"https://music.apple.com/us/search?term=You+Got+Lucky+Tom+Petty+and+the+Heartbreakers","bass":"https://www.youtube.com/results?search_query=You+Got+Lucky+Tom+Petty+and+the+Heartbreakers+bass+tab","bass_status":"search"},{"id":"s044","name":"Lawyers, Guns and Money","artist":"Warren Zevon","apple":"https://music.apple.com/us/search?term=Lawyers%2C+Guns+and+Money+Warren+Zevon","bass":"https://www.youtube.com/results?search_query=Lawyers%2C+Guns+and+Money+Warren+Zevon+bass+tab","bass_status":"search"},{"id":"s045","name":"Someday","artist":"The Strokes","apple":"https://music.apple.com/us/search?term=Someday+The+Strokes","bass":"https://www.youtube.com/results?search_query=Someday+The+Strokes+bass+tab","bass_status":"search"},{"id":"s046","name":"Rock 'n' Roll Star","artist":"Oasis","apple":"https://music.apple.com/us/search?term=Rock+'n'+Roll+Star+Oasis","bass":"https://www.youtube.com/results?search_query=Rock+'n'+Roll+Star+Oasis+bass+tab","bass_status":"search"},{"id":"s047","name":"And She Was","artist":"Talking Heads","apple":"https://music.apple.com/us/search?term=And+She+Was+Talking+Heads","bass":"https://www.youtube.com/results?search_query=And+She+Was+Talking+Heads+bass+tab","bass_status":"search"},{"id":"s048","name":"Cities","artist":"Talking Heads","apple":"https://music.apple.com/us/search?term=Cities+Talking+Heads","bass":"https://www.youtube.com/results?search_query=Cities+Talking+Heads+bass+tab","bass_status":"search"},{"id":"s049","name":"Last Nite","artist":"The Strokes","apple":"https://music.apple.com/us/search?term=Last+Nite+The+Strokes","bass":"https://www.youtube.com/results?search_query=Last+Nite+The+Strokes+bass+tab","bass_status":"search"}];
 const SHARED_PLAYING = ["s007","s011","s021","s024","s031","s020"];
 const SHARED_REMOVED = [];
-const state = {
-  playing: SHARED_PLAYING,
-  removed: SHARED_REMOVED,
-  all: seed.map(s=>s.id).filter(id => !SHARED_PLAYING.includes(id) && !SHARED_REMOVED.includes(id))
-};
+const KEY = "dwat-songs-v2";
+
+function freshState() {
+  return {
+    playing: [...SHARED_PLAYING],
+    removed: [...SHARED_REMOVED],
+    all: seed.map(s=>s.id).filter(id => !SHARED_PLAYING.includes(id) && !SHARED_REMOVED.includes(id))
+  };
+}
+
+let state = JSON.parse(localStorage.getItem(KEY) || "null") || freshState();
+
+// Keep the three lists mutually exclusive and add newly published songs to All Songs.
+const validIds = new Set(seed.map(s=>s.id));
+state.playing = (state.playing || []).filter(id => validIds.has(id));
+state.removed = (state.removed || []).filter(id => validIds.has(id) && !state.playing.includes(id));
+state.all = (state.all || []).filter(id => validIds.has(id) && !state.playing.includes(id) && !state.removed.includes(id));
+const assigned = new Set([...state.all, ...state.playing, ...state.removed]);
+seed.forEach(s => { if (!assigned.has(s.id)) state.all.push(s.id); });
+
 let current = "all";
 const byId = Object.fromEntries(seed.map(s=>[s.id,s]));
-function save(){ localStorage.setItem(KEY, JSON.stringify(state)); render(); }
-function addPlaying(id){ if(!state.playing.includes(id)) state.playing.push(id); state.all = state.all.filter(x=>x!==id); state.removed = state.removed.filter(x=>x!==id); save(); }
-function removeFrom(list,id){ state[list]=state[list].filter(x=>x!==id); state.removedFrom[id]=list; if(!state.removed.includes(id)) state.removed.push(id); save(); }
-function restore(id){ const dest=state.removedFrom[id]||"all"; if(!state[dest].includes(id)) state[dest].push(id); state.removed=state.removed.filter(x=>x!==id); delete state.removedFrom[id]; save(); }
+
+function save(){
+  localStorage.setItem(KEY, JSON.stringify(state));
+  render();
+}
+
+function moveToPlaying(id){
+  state.all = state.all.filter(x=>x!==id);
+  state.removed = state.removed.filter(x=>x!==id);
+  if(!state.playing.includes(id)) state.playing.push(id);
+  save();
+}
+
+function moveToAll(id){
+  state.playing = state.playing.filter(x=>x!==id);
+  state.removed = state.removed.filter(x=>x!==id);
+  if(!state.all.includes(id)) state.all.push(id);
+  save();
+}
+
+function removeSong(id){
+  state.all = state.all.filter(x=>x!==id);
+  state.playing = state.playing.filter(x=>x!==id);
+  if(!state.removed.includes(id)) state.removed.push(id);
+  save();
+}
+
 function render(){
   document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===current));
   const ids=state[current]||[]; const tbody=document.getElementById("rows"); const empty=document.getElementById("empty");
   tbody.innerHTML=""; empty.style.display=ids.length?"none":"block";
   empty.textContent=current==="playing"?"No songs have been added to Playing Together yet.":current==="removed"?"No removed songs.":"No songs.";
   ids.forEach(id=>{
-    const s=byId[id]; if(!s) return; const tr=document.createElement("tr"); let actions="";
-    if(current==="all") actions=`<button class="action playing" onclick="addPlaying('${id}')">Add to Playing</button><button class="action remove" onclick="removeFrom('all','${id}')">Remove</button>`;
-    else if(current==="playing") actions=`<button class="action remove" onclick="removeFrom('playing','${id}')">Remove</button>`;
-    else actions=`<button class="action restore" onclick="restore('${id}')">Restore</button>`;
-    tr.innerHTML=`<td class="name"><a href="${s.apple}" target="_blank" rel="noopener">${s.name}</a></td><td class="artist">${s.artist}</td>`;
+    const s=byId[id]; if(!s) return;
+    const tr=document.createElement("tr");
+    let actions="";
+    if(current==="all") {
+      actions=`<button class="action playing" onclick="moveToPlaying('${id}')">Add to Playing</button>
+               <button class="action remove" onclick="removeSong('${id}')">Remove</button>`;
+    } else if(current==="playing") {
+      actions=`<button class="action" onclick="moveToAll('${id}')">Move to All Songs</button>
+               <button class="action remove" onclick="removeSong('${id}')">Remove</button>`;
+    } else {
+      actions=`<button class="action restore" onclick="moveToAll('${id}')">Restore to All Songs</button>`;
+    }
+    tr.innerHTML=`<td class="name"><a href="${s.apple}" target="_blank" rel="noopener">${s.name}</a></td>
+                  <td class="artist">${s.artist}</td>
+                  <td><div class="actions">${actions}</div></td>`;
     tbody.appendChild(tr);
   });
   document.getElementById("count").textContent=`${ids.length} song${ids.length===1?"":"s"}`;
